@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<!--
+  * Please see the included README.md file for license terms and conditions.
+  -->
+<head>
+    <title>EstacioneApp</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+    <!-- see http://webdesign.tutsplus.com/tutorials/htmlcss-tutorials/quick-tip-dont-forget-the-viewport-meta-tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <style>
+        /* following two viewport lines are equivalent to the meta viewport statement above, needed for Windows */
+        /* see http://www.quirksmode.org/blog/archives/2014/05/html5_dev_conf.html and http://dev.w3.org/csswg/css-device-adapt/ */
+        @-ms-viewport { width: 100vw ; zoom: 100% ; }  @viewport { width: 100vw ; zoom: 100% ; }
+        @-ms-viewport { user-zoom: fixed ; }           @viewport { user-zoom: fixed ; }
+        
+         
+    </style>
+
+    <script src="cordova.js"></script>          <!-- phantom library, needed for Cordova api calls, added during build -->
+    <script src="js/app.js"></script>           <!-- recommended location of your JavaScript code relative to other JS files -->
+    <script src="xdk/init-dev.js"></script>     <!-- normalizes device and document ready events, see README for details -->
+    
+    <link rel="stylesheet" href="jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="jquery.mobile-1.4.5/jquery-1.11.1.min.js"></script>
+    <script src="jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script> 
+    <script src="js/funcao.js"></script>    
+    
+    
+    <script src="js/jquery.maskedinput.js" type="text/javascript"></script>
+    <script src="lib/jquery-1.9.0.min.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+	$('.valor_pagar').priceFormat({
+		prefix: 'R$ ',
+		centsSeparator: ',',
+		thousandsSeparator: '.'
+	});
+</script>
+
+    
+</head>
+
+<body>
+    
+    
+    <div data-role="page" style=" background-color:#FFFACD" id="pag_incluir">       
+        
+        
+        <!-- INICIO HEADER -->
+        <div  data-rolse="header">
+            <center><h1> Registrar Entrada</h1> </center>            
+        </div>
+        <!-- FIM HEADER -->
+        
+        <!-- INICIO MAIN -->
+    
+        <div id="div_incluir" data-role="main" class="ui-content">         
+            
+            <table id='details-table' class='table table-bordered' border=0 border CELLPADDING=-1 COLLPADDING=-1>
+            <tr>
+                <td><label  style='font-size: 25px'>Placa</label></td>
+            <td><input style='font-size: 25px; text-align:center' size='25'  id="placa" type="text" name="placa" /></td>  
+            </tr>
+                <tr>
+                
+            <td><label  style='font-size: 25px'>Veículo</label>
+            <td><input style='font-size: 25px; text-align:center' size='25' id='veiculo' type='text' id="-veiculo" type="text" name="veiculo" /></td>
+                    </tr>
+                
+                <tr>                    
+            <td><label  style='font-size: 24px'>e-mail</label></td>
+            <td><input style='font-size: 24px; text-align:center' size='25'  type='text' id="email" name="email" /></td> 
+                    </tr>
+                
+                <tr>
+            <td><label  style='font-size: 25px'>Telefone:</label></td>
+            <td><input style='font-size: 25px; text-align:center' size='25'  type='text' id="telefone" /></td> 
+                    </tr>
+                
+                <tr>
+            <td><label  style='font-size: 25px'>Data Entrada</label></td>
+            <td><input style='font-size: 25px; text-align:center' size='25'  type="date" data-clear-btn="true" name="data_entrada"  id="data_entrada" /></td>  
+                    </tr>
+                
+                <tr>
+            <td><label  style='font-size: 25px'>Hora Entrada</label></td>
+            <td><input style='font-size: 25px; text-align:center' size='25'  type="time" data-clear-btn="false" name="hora_entrada" id="hora_entrada" /></td>  
+                    </tr>
+                
+                <tr>
+            <td><label  style='font-size: 25px'>Data Saida</label></td>
+            <td><input style='font-size: 25px; text-align:center' size='25'  type="date" data-clear-btn="true" name="data_saida"  id="data_saida" />
+                </tr>
+                
+                <tr>
+             <td><label  style='font-size: 25px'>Hora Saída</label>
+            <td><input style='font-size: 25px; text-align:center' size='25' type="time" data-clear-btn="false" name="hora_saida" id="hora_saida" />
+                </tr>
+                
+                <tr>
+            <td><label  style='font-size: 25px'>Valor</label>
+            <td><input style='font-size: 25px; text-align:center' size='25' type="text" id="valor_pagar"  name="valor_pagar" /> 
+                   </tr>               
+                <tr>
+            </table>
+            <button id="inclusao" style='font-size: 25px; text-align:center '  type='button' onclick='atualiza(this)' class='ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-check'>Salvar</button>          
+            <a href="#pag_listar" style='font-size: 25px; text-align:center ' class='ui-btn ui-shadow ui-corner-all ui-btn-icon-right ui-icon-search'">Listar Veículos</a>
+            
+        </div>
+        <!-- FIM MAIN -->
+    </div>
+    <!-- FIM PAG_INCLUIR -->
+    
+   
+    
+    <!-- INICIO PAG_LISTAR -->
+    <div data-role="page" style=" background-color:#FFFACD" id="pag_listar">
+    
+     <!-- INICIO HEADER -->
+    <div data-role="header" data-position="fixed">
+
+        
+      <a href="#pag_incluir" style='font-size: 30px;'  class="ui-btn  ui-btn-icon-notext ui-corner-all ui-icon-back"> Voltar</a>
+        <h1><label  style='font-size: 35px'>Veículos</label></h1>     
+        
+    </div>
+     <!-- FIM  HEADER -->
+    
+    <!-- INICIO MAIN -->
+    <div data-role="main" class="ui-content">
+        <p id="listar_veiculo"></p>            
+    </div>
+         <!-- FIM MAIN -->
+        
+    </div>
+     <!-- FIM PAG_LISTAR -->
+    
+    
+      <!-- INICIO PAG_ATUALIZAR -->
+    <div data-role="page" style=" background-color:#FFFACD" id="pag_atualizar">
+    
+     <!-- INICIO HEADER -->
+    <div data-role="header">       
+       
+        
+        <h1><label  style='font-size: 35px'>Veículo</label></h1>
+    </div>
+     <!-- FIM  HEADER -->
+    
+    <!-- INICIO MAIN -->
+    <div data-role="main" class="ui-content">
+     <p id="atualizar_veiculo"></p>
+        <a href="#pag_listar" style='font-size: 25px;'  class="ui-btn ui-btn-left ui-btn-icon-notext ui-corner-all ui-icon-back">Voltar</a>    
+         <!-- <p id="atualizar_veiculo"></p>  -->
+                   
+    </div>
+         <!-- FIM MAIN -->
+        
+    </div>
+     <!-- FIM PAG_ATUALIZAR -->
+
+</body>
+</html>

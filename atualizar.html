@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<!--
+  * Please see the included README.md file for license terms and conditions.
+  -->
+<head>
+    <title>EstacioneApp</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+    <!-- see http://webdesign.tutsplus.com/tutorials/htmlcss-tutorials/quick-tip-dont-forget-the-viewport-meta-tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <style>
+        /* following two viewport lines are equivalent to the meta viewport statement above, needed for Windows */
+        /* see http://www.quirksmode.org/blog/archives/2014/05/html5_dev_conf.html and http://dev.w3.org/csswg/css-device-adapt/ */
+        @-ms-viewport { width: 100vw ; zoom: 100% ; }  @viewport { width: 100vw ; zoom: 100% ; }
+        @-ms-viewport { user-zoom: fixed ; }           @viewport { user-zoom: fixed ; }
+    </style>
+
+    <script src="cordova.js"></script>          <!-- phantom library, needed for Cordova api calls, added during build -->
+    <script src="js/app.js"></script>           <!-- recommended location of your JavaScript code relative to other JS files -->
+    <script src="xdk/init-dev.js"></script>     <!-- normalizes device and document ready events, see README for details -->
+    
+    <link rel="stylesheet" href="jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="jquery.mobile-1.4.5/jquery-1.11.1.min.js"></script>
+    <script src="jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="js/funcao.js"></script>
+    
+</head>
+
+<body>
+    <div data-role="page" id="pag_incluir">
+        
+        <!-- INICIO HEADER -->
+        <div data-rolse="header">
+            <h1>Novo Controle</h1>            
+        </div>
+        <!-- FIM HEADER -->
+        
+        <!-- INICIO MAIN -->
+        <div data-role="main" class="ui-content"> 
+            
+            <label>Placa</label>
+            <input id="placa" type="text" name="placa" /> 
+            
+            <label>Veículo</label>
+            <input id="veiculo" type="text" name="veiculo" /> 
+            
+            <label>e-mail</label>
+            <input id="email" type="text" name="email" /> 
+            
+            <label>Telefone</label>
+            <input id="telefone" type="text" name="telefone" />  
+            
+            <label>Data Entrada</label>
+            <input id="data_entrada" type="text" name="data_entrada" />            
+            <label>Hora Entrada</label> 
+            <input id="hora_entrada" type="text" name="hora_entrada" /> 
+            
+            <label>Data Saída</label>
+           
+            <input type="date" data-clear-btn="true" name="dta_saida" id="data_saida" value="">
+            <label>Hora Saída</label>
+            <input id="hora_saida" type="text" name="hora_saida" /> 
+            
+            <label>Valor</label>
+            <input id="valor_pagar" type="text" name="valor_pagar" />
+            
+            
+            <button id="inclusao" >Novosss</button>
+           
+
+            
+            <hr>
+            
+            <a href="#pag_listar" class="ui-btn ui-btn-corner-all">Listar Veículos</a>
+            
+            
+        </div>
+        <!-- FIM MAIN -->
+    </div>
+    <!-- FIM PAG_INCLUIR -->
+    
+   
+    
+  
+    
+    
+
+</body>
+</html>
